@@ -1,0 +1,1 @@
+from .shapes import calculate_area # noqa

@@ -1,7 +1,7 @@
 import math
 
 
-class Shape:
+class _Shape:
     """Базовый класс фигуры"""
     def __init__(self, *args) -> None:
         self.text = 'Фигура'
@@ -10,7 +10,7 @@ class Shape:
         raise NotImplementedError('Подклассы должны реализовывать этот метод')
 
 
-class Circle(Shape):
+class _Circle(_Shape):
     """Круг"""
 
     def __init__(self, radius):
@@ -22,7 +22,7 @@ class Circle(Shape):
         return self.text, round(square, 2)
 
 
-class Triangle(Shape):
+class _Triangle(_Shape):
     """Треугольник"""
 
     def __init__(self, a, b, c):
@@ -51,9 +51,9 @@ def create_shape(*args):
     """Создание фигуры"""
 
     if len(args) == 1:
-        return Circle(args[0])
+        return _Circle(args[0])
     elif len(args) == 3:
-        return Triangle(args[0], args[1], args[2])
+        return _Triangle(args[0], args[1], args[2])
     else:
         raise ValueError(
             'Недопустимое количество аргументов для создания фигуры'
@@ -62,6 +62,7 @@ def create_shape(*args):
 
 def calculate_area(*args):
     """Создание фигуры и вычисление ее площади"""
+
     return create_shape(*args).area()
 
 
